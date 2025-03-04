@@ -206,14 +206,7 @@ func WithTls(tlsConfig *tls.Config) Option {
 func (a *Adapter) open() error {
 	//redis.Dial("tcp", "127.0.0.1:6379")
 	useTls := a.tlsConfig != nil
-	if a.username != "" {
-		conn, err := redis.Dial(a.network, a.address, redis.DialUsername(a.username), redis.DialPassword(a.password), redis.DialTLSConfig(a.tlsConfig), redis.DialUseTLS(useTls))
-		if err != nil {
-			return err
-		}
-
-		a._conn = conn
-	} else if a.password == "" {
+	if a.password == "" {
 		conn, err := redis.Dial(a.network, a.address, redis.DialTLSConfig(a.tlsConfig), redis.DialUseTLS(useTls))
 		if err != nil {
 			return err

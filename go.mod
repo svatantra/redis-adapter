@@ -1,4 +1,4 @@
-module github.com/casbin/redis-adapter/v3
+module github.com/svatantra/redis-adapter/v3
 
 go 1.12
 
